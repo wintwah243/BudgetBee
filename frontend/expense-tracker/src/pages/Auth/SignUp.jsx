@@ -92,7 +92,7 @@ const SignUp = () => {
     }, [navigate, updateUser]);
 
     const loginWithGoogle = () => {
-      window.open("https://budgetbee-vsmk.onrender.com/api/v1/auth/google/callback", "_self");
+      window.open("https://budgetbee-vsmk.onrender.com/google-auth", "_self");
     };
 
   return (
