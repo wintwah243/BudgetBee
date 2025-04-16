@@ -200,19 +200,19 @@ router.put("/update-profile", protect, async (req, res) => {
 router.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 router.get("/google/callback", passport.authenticate("google", {
     session: false, 
+    failureRedirect: "/api/v1/auth/google/failure"
 }), (req, res) => {
-    // Generate the token manually
     const token = jwt.sign(
         { id: req.user._id },
         process.env.JWT_SECRET,
         { expiresIn: "7d" }
     );
 
-    // Redirect to frontend with token
     res.redirect(`https://budgetbee-vsmk.onrender.com/google-auth?token=${token}`);
 });
-
-
+router.get("/google/failure", (req, res) => {
+    res.status(401).json({ status: 401, message: "Google authentication failed" });
+});
 
 
 module.exports = router;
