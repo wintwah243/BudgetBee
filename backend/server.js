@@ -45,7 +45,7 @@ passport.use(
     new OAuthStrategy({
         clientID: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
-        callbackURL: "/api/v1/auth/google/callback",
+        callbackURL: "https://budgetbee-backend-p6tn.onrender.com/api/v1/auth/google/callback",
         scope: ["profile", "email"]
     },
     async(accessToken, refreshToken, profile, done) => {
