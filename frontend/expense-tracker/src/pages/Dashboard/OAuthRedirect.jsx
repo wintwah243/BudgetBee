@@ -1,6 +1,6 @@
 import { useEffect, useContext } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { UserContext } from "../../context/userContext";
+import { UserContext } from "../../context/UserContext";
 import axiosInstance from "../../utils/axiosInstance";
 
 const OAuthRedirect = () => {
