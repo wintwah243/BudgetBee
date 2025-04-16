@@ -90,6 +90,9 @@ app.use("/api/v1/dashboard", dashboardRoutes);
 
 app.use("/uploads", express.static(path.join(__dirname,"uploads")));
 
+app.use(express.static(path.join(__dirname, '../frontend/expense-tracker/dist')));
+
+
 app.use((req, res, next) => {
   if (req.url.endsWith('.css')) {
     res.setHeader('Content-Type', 'text/css');
