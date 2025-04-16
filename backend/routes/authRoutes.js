@@ -67,7 +67,12 @@ router.post("/sendpasswordlink", async(req, res) => {
                 from:"wahwint72@gmail.com",
                 to:email,
                 subject:"Sending Email For Password Reset",
-                text:`This link is valid for 2 minutes https://budgetbee-vsmk.onrender.com/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`
+                html: `
+                  <p>This link is valid for 2 minutes:</p>
+                    <a href="https://budgetbee-vsmk.onrender.com/forgotpassword/${userfind.id}/${setusertoken.verifytoken}">
+                        Click here to reset your password
+                    </a>
+                    `
             }
 
             transporter.sendMail(mailOptions, (error, info) => {
