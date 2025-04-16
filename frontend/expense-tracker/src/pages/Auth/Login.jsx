@@ -74,7 +74,7 @@ const Login = () => {
   };
 
   const loginWithGoogle = () => {
-    window.open("https://budgetbee-backend-p6tn.onrender.com/api/v1/auth/google/callback", "_self");
+    window.open("https://budgetbee-backend-p6tn.onrender.com/api/v1/auth/google", "_self");
   };
 
   return (
