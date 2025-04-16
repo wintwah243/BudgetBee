@@ -134,7 +134,7 @@ router.post("/:id/:token", async (req, res) => {
         id,
         {
           password: hashedPassword,
-          verifytoken: null // ✅ Invalidate token after use
+          verifytoken: null 
         },
         { new: true }
       );
@@ -194,7 +194,7 @@ router.put("/update-profile", protect, async (req, res) => {
 // Initial Google OAuth login
 router.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 router.get("/google/callback", passport.authenticate("google", {
-    session: false, // very important if you're using JWT instead of sessions
+    session: false, 
 }), (req, res) => {
     // Generate the token manually
     const token = jwt.sign(
