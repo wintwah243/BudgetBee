@@ -81,7 +81,7 @@ const SignUp = () => {
         })
         .then((res) => {
           console.log("OAuth user fetched:", res.data);
-          updateUser(res.data); // or res.data.user if needed
+          updateUser(res.data); 
           navigate("/dashboard", { replace: true });
         })
         .catch((err) => {
@@ -92,7 +92,7 @@ const SignUp = () => {
     }, [navigate, updateUser]);
 
     const loginWithGoogle = () => {
-      window.open("https://budgetbee-vsmk.onrender.com/google-auth", "_self");
+      window.open("https://budgetbee-backend-p6tn.onrender.com/api/v1/auth/google/callback", "_self");
     };
 
   return (
