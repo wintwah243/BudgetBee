@@ -67,7 +67,7 @@ router.post("/sendpasswordlink", async(req, res) => {
                 from:"wahwint72@gmail.com",
                 to:email,
                 subject:"Sending Email For Password Reset",
-                text:`This link is valid for 2 minutes http://localhost:5173/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`
+                text:`This link is valid for 2 minutes https://budgetbee-vsmk.onrender.com/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`
             }
 
             transporter.sendMail(mailOptions, (error, info) => {
@@ -204,7 +204,7 @@ router.get("/google/callback", passport.authenticate("google", {
     );
 
     // Redirect to frontend with token
-    res.redirect(`http://localhost:5173/google-auth?token=${token}`);
+    res.redirect(`https://budgetbee-vsmk.onrender.com/google-auth?token=${token}`);
 });
 
 
