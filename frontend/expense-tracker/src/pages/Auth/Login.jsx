@@ -29,7 +29,7 @@ const Login = () => {
       })
       .then((res) => {
         console.log("OAuth user fetched:", res.data);
-        updateUser(res.data); // or res.data.user if needed
+        updateUser(res.data); // 
         navigate("/dashboard", { replace: true });
       })
       .catch((err) => {
@@ -74,7 +74,7 @@ const Login = () => {
   };
 
   const loginWithGoogle = () => {
-    window.open("http://localhost:8000/api/v1/auth/google/callback", "_self");
+    window.open("https://budgetbee-vsmk.onrender.com/api/v1/auth/google/callback", "_self");
   };
 
   return (
