@@ -74,7 +74,7 @@ const Login = () => {
   };
 
   const loginWithGoogle = () => {
-    window.open("http://localhost:8000/api/v1/auth/google/callback", "_self");
+    window.open("https://budgetbee-vsmk.onrender.com/api/v1/auth/google/callback", "_self");
   };
 
   return (
