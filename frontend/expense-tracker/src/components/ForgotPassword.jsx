@@ -15,7 +15,7 @@ const ForgotPassword = () => {
   const [message, setMessage] = useState("");
 
   const userValid = async() => {
-    const res = await fetch(`http://localhost:8000/api/v1/auth/forgotpassword/${id}/${token}`, {
+    const res = await fetch(`https://budgetbee-vsmk.onrender.com/api/v1/auth/forgotpassword/${id}/${token}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -36,7 +36,7 @@ const ForgotPassword = () => {
   const sendpassword = async(e) => {
     e.preventDefault();
 
-    const res = await fetch(`http://localhost:8000/api/v1/auth/${id}/${token}`, {
+    const res = await fetch(`https://budgetbee-vsmk.onrender.com/api/v1/auth/${id}/${token}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
