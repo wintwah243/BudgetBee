@@ -90,13 +90,22 @@ app.use("/api/v1/dashboard", dashboardRoutes);
 
 app.use("/uploads", express.static(path.join(__dirname,"uploads")));
 
+// Serve static files from React build directory
 app.use(express.static(path.join(__dirname, 'client/build'), {
-  setHeaders: function (res, path) {
-    if (path.endsWith('.css')) {
+  setHeaders: function (res, filePath) {
+    if (filePath.endsWith('.css')) {
       res.set('Content-Type', 'text/css');
+    }
+    if (filePath.endsWith('.js')) {
+      res.set('Content-Type', 'application/javascript');
     }
   }
 }));
+
+// Add fallback for React routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 
 const PORT = process.env.PORT || 5000;
