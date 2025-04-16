@@ -1,5 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config();
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
@@ -13,7 +12,6 @@ const expenseRoutes = require("./routes/expenseRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const userdb = require('./models/User');
 const jwt = require("jsonwebtoken");
-import { fileURLToPath } from 'url';
 
 
 const app = express();
@@ -90,17 +88,6 @@ app.use("/api/v1/expense", expenseRoutes);
 app.use("/api/v1/dashboard", dashboardRoutes);
 
 app.use("/uploads", express.static(path.join(__dirname,"uploads")));
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Serve static files from 'dist'
-app.use(express.static(path.join(__dirname, 'dist')));
-
-//Handle all routes by sending index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
 
 
 app.use((req, res, next) => {
