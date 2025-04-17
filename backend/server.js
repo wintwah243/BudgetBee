@@ -86,18 +86,6 @@ app.use("/api/v1/income", incomeRoutes);
 app.use("/api/v1/expense", expenseRoutes);
 app.use("/api/v1/dashboard", dashboardRoutes);
 
-// Ensure the static files are served correctly from the dist folder
-app.use(
-  express.static(path.resolve(__dirname, '..', 'frontend', 'expense-tracker', 'dist'))
-);
-
-// Catch-all route to handle SPA routing and serve index.html
-app.get('*', (req, res) => {
-  res.sendFile(
-    path.resolve(__dirname, '..', 'frontend', 'expense-tracker', 'dist', 'index.html')
-  );
-});
-
 app.use("/uploads", express.static(path.join(__dirname,"uploads")));
 
 
