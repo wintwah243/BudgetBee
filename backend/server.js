@@ -1,17 +1,26 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const path = require("path");
-const connectDB = require("./config/db");
-const session = require("express-session");
-const passport = require("passport");
-const OAuthStrategy = require("passport-google-oauth2").Strategy;
-const authRoutes = require("./routes/authRoutes");
-const incomeRoutes = require("./routes/incomeRoutes");
-const expenseRoutes = require("./routes/expenseRoutes");
-const dashboardRoutes = require("./routes/dashboardRoutes");
-const userdb = require('./models/User');
-const jwt = require("jsonwebtoken");
+import dotenv from "dotenv";
+dotenv.config();
+
+import express from "express";
+import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
+import session from "express-session";
+import passport from "passport";
+import { Strategy as OAuthStrategy } from "passport-google-oauth2";
+import jwt from "jsonwebtoken";
+
+// Internal imports (adjust the paths if needed)
+import connectDB from "./config/db.js";
+import authRoutes from "./routes/authRoutes.js";
+import incomeRoutes from "./routes/incomeRoutes.js";
+import expenseRoutes from "./routes/expenseRoutes.js";
+import dashboardRoutes from "./routes/dashboardRoutes.js";
+import userdb from "./models/User.js";
+
+// Workaround for __dirname in ES module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 
 const app = express();
@@ -90,13 +99,21 @@ app.use("/api/v1/dashboard", dashboardRoutes);
 app.use("/uploads", express.static(path.join(__dirname,"uploads")));
 
 
+// Set Content-Type header manually for .css files (Render sometimes misinterprets it)
 app.use((req, res, next) => {
-  if (req.url.endsWith('.css')) {
-    res.setHeader('Content-Type', 'text/css');
+  if (req.url.endsWith(".css")) {
+    res.setHeader("Content-Type", "text/css");
   }
   next();
 });
 
+// Serve frontend (React build)
+app.use(express.static(path.join(__dirname, "..", "dist"))); // adjust if build folder is elsewhere
+
+// Catch-all for React Router (e.g., /forgotpassword/:id/:token)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "dist", "index.html"));
+});
 
 
 const PORT = process.env.PORT || 5000;
