@@ -107,12 +107,18 @@ app.use((req, res, next) => {
   next();
 });
 
-// Serve frontend (React build)
-app.use(express.static(path.join(__dirname, "..", "dist"))); // adjust if build folder is elsewhere
+// ✅ Serve static files from frontend/expense-tracker/dist
+app.use(
+  express.static(
+    path.join(__dirname, "..", "frontend", "expense-tracker", "dist")
+  )
+);
 
-// Catch-all for React Router (e.g., /forgotpassword/:id/:token)
+// ✅ Catch-all route for SPA deep linking
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "dist", "index.html"));
+  res.sendFile(
+    path.join(__dirname, "..", "frontend", "expense-tracker", "dist", "index.html")
+  );
 });
 
 
