@@ -10,7 +10,7 @@ const ForgotPassword = () => {
   const history = useNavigate();
 
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState(false); // default is false
+  const [message, setMessage] = useState(false); 
 
   const userValid = async () => {
     const res = await fetch(`https://budgetbee-backend-p6tn.onrender.com/api/v1/auth/forgotpassword/${id}/${token}`, {
