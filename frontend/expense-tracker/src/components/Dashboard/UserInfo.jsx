@@ -6,6 +6,7 @@ import axiosInstance from '../../utils/axiosInstance';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import DashboardLayout from '../layouts/DashboardLayout';
+import { motion } from 'framer-motion';
 
 const UserInfo = () => {
   const [user, setUser] = useState(null);
@@ -52,7 +53,7 @@ const UserInfo = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.put(
-        'http://localhost:8000/api/v1/auth/update-profile',
+        'https://budgetbee-backend-p6tn.onrender.com/api/v1/auth/update-profile',
         { name: newName },
         {
           headers: {
@@ -122,15 +123,22 @@ const UserInfo = () => {
   return (
     <DashboardLayout>
       <div className="max-w-3xl w-full mx-auto mt-10 mb-20 px-4">
-        <button
+        <motion.button
           onClick={handleGoBack}
           className="flex items-center gap-2 text-sm text-gray-700 border rounded-full p-[10px] hover:text-yellow-500 mb-6 transition-colors duration-200"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
           <FiArrowLeft size={18} />
           <span className="font-medium">Back to Dashboard</span>
-        </button>
+         </motion.button>
 
-        <div className="flex items-center justify-between mb-10">
+        <motion.div
+          className="flex items-center justify-between mb-10"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="flex items-center gap-4">
             {user?.profileImageUrl ? (
               <img
@@ -151,14 +159,16 @@ const UserInfo = () => {
               <p className="text-sm text-gray-500">Personal Info</p>
             </div>
           </div>
-          <button
+          <motion.button
             onClick={() => setEditingProfilePic(true)}
             className="bg-yellow-100 text-yellow-700 text-sm font-medium px-4 py-2 rounded-lg hover:bg-yellow-200 transition"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             <FiEdit className="inline-block mr-2" />
             Edit Picture
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
 
         {editingProfilePic && (
           <form onSubmit={handleSubmitProfilePic} className="mb-10 space-y-4">
@@ -181,7 +191,12 @@ const UserInfo = () => {
           </form>
         )}
 
-        <div className="mb-6">
+        <motion.div
+          className="mb-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
           <div className="flex justify-between items-center mb-2">
             <h3 className="text-gray-700 font-semibold">Full Name</h3>
             {!editingName && (
@@ -216,28 +231,34 @@ const UserInfo = () => {
               {user?.fullName || 'No Name'}
             </div>
           )}
-        </div>
+        </motion.div>
 
-        <div className="mb-6">
+        <motion.div
+          className="mb-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
           <h3 className="text-gray-700 font-semibold mb-1">Email</h3>
           <div className="w-full border border-gray-300 rounded-lg p-2 text-gray-600 text-base bg-gray-50">
             {user?.email || 'No Email'}
           </div>
-        </div>
+        </motion.div>
         
-        <div className="mt-10 bg-yellow-50 border border-yellow-200 rounded-xl p-5 shadow-sm">
+       <motion.div
+          className="mt-10 bg-yellow-50 border border-yellow-200 rounded-xl p-5 shadow-sm"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+        >
           <h4 className="text-lg font-semibold text-yellow-700 mb-1">✨ Keep Going!</h4>
           <p className="text-sm text-gray-700">
             "Take control of your finances — track, save, and grow with confidence."
           </p>
-        </div>
-
+       </motion.div>
       </div>
     </DashboardLayout>
   );
-
-
-
 };
 
 export default UserInfo;
