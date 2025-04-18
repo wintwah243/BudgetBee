@@ -1,4 +1,3 @@
-
 import moment from "moment";
 
 export const validateEmail = (email) => {
