@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const passport = require("passport");
 const {storage} = require("../config/cloudinary");
 const fs = require("fs");
-const cloudinary = require("../config/cloudinary");
+const { cloudinary } = require("../config/cloudinary");
 
 const keysecret = process.env.JWT_SECRET;
 
@@ -176,32 +176,22 @@ router.put("/update-profile", protect, async (req, res) => {
   
 // Update user profile picture with cloudinary
 router.put("/update-profile-pic", protect, upload.single("profilePic"), async (req, res) => {
-    try {
-      const user = await User.findById(req.user.id);
-      if (!user) return res.status(404).json({ message: "User not found" });
-  
-      if (req.file) {
-        // Upload to Cloudinary
-        const result = await cloudinary.uploader.upload(req.file.path, {
-          folder: "Home/images",
-          use_filename: true,
-        });
-  
-        // Save Cloudinary secure URL
-        user.profileImageUrl = result.secure_url;
-  
-        // Delete temp file
-        fs.unlinkSync(req.file.path);
-      }
-  
-      await user.save();
-      res.status(200).json({ user });
-  
-    } catch (err) {
-      console.error("Cloudinary Upload Error:", error); 
-      console.error(err);
-      res.status(500).json({ message: "Error updating profile picture" });
+  try {
+    const user = await User.findById(req.user.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    if (req.file) {
+      // req.file.path is already Cloudinary URL
+      user.profileImageUrl = req.file.path; // or req.file.secure_url depending on how multer-storage-cloudinary returns it
     }
+
+    await user.save();
+    res.status(200).json({ user });
+
+  } catch (error) {
+    console.error("Cloudinary Upload Error:", error);
+    res.status(500).json({ message: "Error updating profile picture" });
+  }
 });
 
 
