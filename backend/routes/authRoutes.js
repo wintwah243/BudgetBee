@@ -4,6 +4,8 @@ const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 const passport = require("passport");
+const {storage} = require("../config/cloudinary");
+const fs = require("fs");
 
 const keysecret = process.env.JWT_SECRET;
 
@@ -171,28 +173,32 @@ router.put("/update-profile", protect, async (req, res) => {
     }
   });
   
-  // Update user profile picture
+// Update user profile picture with cloudinary
 router.put("/update-profile-pic", protect, upload.single("profilePic"), async (req, res) => {
     try {
-        const user = await User.findById(req.user.id);
-        if (!user) {
-            return res.status(404).json({ message: "User not found" });
-        }
-
-        // Base URL to use for the image
-        const baseUrl = "https://budgetbee-backend-p6tn.onrender.com";
-
-        // If a file was uploaded, update the user's profile image URL
-        if (req.file) {
-            user.profileImageUrl = `${baseUrl}/uploads/${req.file.filename}`;
-        }
-
-        // Save the user with the updated profile image URL
-        await user.save();
-        res.status(200).json({ user });
+      const user = await User.findById(req.user.id);
+      if (!user) return res.status(404).json({ message: "User not found" });
+  
+      if (req.file) {
+        // Upload to Cloudinary
+        const result = await cloudinary.uploader.upload(req.file.path, {
+          folder: "images",
+          use_filename: true,
+        });
+  
+        // Save Cloudinary secure URL
+        user.profileImageUrl = result.secure_url;
+  
+        // Delete temp file
+        fs.unlinkSync(req.file.path);
+      }
+  
+      await user.save();
+      res.status(200).json({ user });
+  
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: "Error updating profile picture" });
+      console.error(err);
+      res.status(500).json({ message: "Error updating profile picture" });
     }
 });
 
