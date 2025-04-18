@@ -1,7 +1,5 @@
-
 export const BASE_URL = "https://budgetbee-backend-p6tn.onrender.com";
 
-//utils/apiPaths.js
 export const API_PATHS = {
     AUTH: {
         LOGIN: "/api/v1/auth/login",
