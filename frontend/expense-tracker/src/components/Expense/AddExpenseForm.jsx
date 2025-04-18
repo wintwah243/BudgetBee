@@ -3,7 +3,6 @@ import Input from '../Inputs/Input';
 import EmojiPickerPopup from '../EmojiPickerPopup';
 
 const AddExpenseForm = ({ onAddExpense, initialData }) => {
-  // Use `initialData` to pre-fill the form for editing
   const [expense, setExpense] = useState({
     category: initialData?.category || '',
     description: initialData?.description || '',
@@ -12,7 +11,6 @@ const AddExpenseForm = ({ onAddExpense, initialData }) => {
     icon: initialData?.icon || '',
   });
 
-  // Pre-fill form when editing
   useEffect(() => {
     if (initialData) {
       setExpense({
