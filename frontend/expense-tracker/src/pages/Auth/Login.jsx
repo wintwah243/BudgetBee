@@ -14,7 +14,7 @@ const Login = () => {
   const { updateUser } = useContext(UserContext);
   const navigate = useNavigate();
 
-  // 🔁 Handle token in URL from Google OAuth
+  //Handle token in URL from Google OAuth
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const token = params.get("token");
