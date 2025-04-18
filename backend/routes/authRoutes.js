@@ -172,17 +172,22 @@ router.put("/update-profile", protect, async (req, res) => {
   });
   
   // Update user profile picture
-  router.put("/update-profile-pic", protect, upload.single("profilePic"), async (req, res) => {
+router.put("/update-profile-pic", protect, upload.single("profilePic"), async (req, res) => {
     try {
         const user = await User.findById(req.user.id);
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
 
+        // Base URL to use for the image
+        const baseUrl = "https://budgetbee-backend-p6tn.onrender.com";
+
+        // If a file was uploaded, update the user's profile image URL
         if (req.file) {
-            user.profileImageUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+            user.profileImageUrl = `${baseUrl}/uploads/${req.file.filename}`;
         }
 
+        // Save the user with the updated profile image URL
         await user.save();
         res.status(200).json({ user });
     } catch (err) {
@@ -190,6 +195,7 @@ router.put("/update-profile", protect, async (req, res) => {
         res.status(500).json({ message: "Error updating profile picture" });
     }
 });
+
 
 // Initial Google OAuth login
 router.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
