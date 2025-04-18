@@ -183,7 +183,7 @@ router.put("/update-profile-pic", protect, upload.single("profilePic"), async (r
       if (req.file) {
         // Upload to Cloudinary
         const result = await cloudinary.uploader.upload(req.file.path, {
-          folder: "images",
+          folder: "Home/images",
           use_filename: true,
         });
   
