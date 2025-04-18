@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 
 const Banner = () => {
   return (
-    <div className="w-full bg-gradient-to-br from-purple-400 to-yellow-400 rounded-xl p-6 md:p-10 text-white flex flex-col md:flex-row justify-between items-center shadow-lg mb-10">
+    <div className="w-full bg-gradient-to-r from-purple-400 via-pink-300 to-red-300 rounded-xl p-6 md:p-10 text-white flex flex-col md:flex-row justify-between items-center shadow-lg mb-10">
       <div className="mb-6 md:mb-0 max-w-md">
         <h2 className="text-xl md:text-2xl font-semibold mb-2">
           Welcome from Budget<span className="text-yellow-400">Bee</span>
         </h2>
-        <p className="text-sm md:text-base text-gray-200">
+        <p className="text-sm md:text-base text-gray-600">
           Stay on top of your finances, track your expenses, and save smarter.
         </p>
         <Link to='/learnmore'><button className="mt-4 px-6 py-2 bg-white text-gray-900 rounded-full text-sm font-semibold hover:bg-gray-200 transition duration-300">
