@@ -42,7 +42,7 @@ const Income = () => {
     }
   };
 
-  //handle add expense and edit expense
+  //handle add income and edit income
 const handleAddIncome = async (income) => {
   const { source, description, amount, date, icon } = income;
 
