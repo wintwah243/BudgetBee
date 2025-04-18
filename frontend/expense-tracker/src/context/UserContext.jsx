@@ -28,7 +28,8 @@ const UserProvider = ({ children }) => {
             value={{
                 user,
                 updateUser,
-                clearUser
+                clearUser,
+                setUser
             }}
         >
             {children}
