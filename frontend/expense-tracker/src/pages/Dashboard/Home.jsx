@@ -16,6 +16,7 @@ import RecentIncomeWithChart from '../../components/Dashboard/RecentIncomeWithCh
 import RecentIncome from '../../components/Dashboard/RecentIncome';
 import Footer from './Footer';
 import Banner from './Banner';
+import { motion } from 'framer-motion';
 
 const Home = () => {
   useUserAuth();
@@ -50,7 +51,12 @@ const Home = () => {
     <DashboardLayout activeMenu="Dashboard">
       <div className="my-5 mx-auto">
         <Banner />
-        <div className="grid grid-cols md:grid-cols-3 gap-6">
+       <motion.div
+          className="grid grid-cols md:grid-cols-3 gap-6"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
           <InfoCard
             icon={<IoMdCard />}
             label="Total Balance"
@@ -72,8 +78,14 @@ const Home = () => {
             color="bg-white"
             bgColor="bg-orange-400"
           />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+        </motion.div>
+        
+       <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           <RecentTransactions
             transactions={dashboardData?.recentTransactions}
             onSeeMore={() => navigate("/expense")}
@@ -103,7 +115,7 @@ const Home = () => {
               transactions={dashboardData?.last60DaysIncome?.transactions || []}
               onSeeMore={() => navigate("/income")}
             />
-        </div>
+        </motion.div>
         <Footer />
       </div>
     </DashboardLayout>
