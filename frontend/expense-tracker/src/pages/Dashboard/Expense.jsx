@@ -9,6 +9,7 @@ import Modal from '../../components/Modal';
 import AddExpenseForm from '../../components/Expense/AddExpenseForm';
 import ExpenseList from '../../components/Expense/ExpenseList';
 import DeleteAlert from '../../components/DeleteAlert';
+import { motion } from "framer-motion";
 
 const Expense = () => {
   useUserAuth();
@@ -132,26 +133,43 @@ const handleAddExpense = async (expense) => {
     }
   }; 
 
-
-
 useEffect(() => {
   fetchExpenseDetails();
 
   return () => {};
 }, []);
 
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+  };
+
   return (
     <DashboardLayout activeMenu="Expense">
-      <div className='my-5 mx-auto'>
+      <motion.div
+        className="my-5 mx-auto"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <div className='grid grid-cols-1 gap-6'>
-          <div className=''>
+         <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             <ExpenseOverview
               transactions={expenseData}
               onExpenseIncome={() => setOpenAddExpenseModal(true)}
             >
             </ExpenseOverview>
-          </div>
+          </motion.div>
 
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
           <ExpenseList 
             transactions={expenseData}
              onDelete={(id) => {
@@ -163,7 +181,7 @@ useEffect(() => {
               setOpenAddExpenseModal(true);
                }}
                />
-
+        </motion.div>
         </div>
 
         <Modal
@@ -187,7 +205,7 @@ useEffect(() => {
             onDelete={() => deleteExpense(openDeleteAlert.data)}
             />
           </Modal>
-      </div>
+     </motion.div>
     </DashboardLayout>
   )
 }
