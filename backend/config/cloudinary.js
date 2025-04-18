@@ -11,7 +11,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: "budgetbee", // Folder in Cloudinary
+    folder: "images", // Folder in Cloudinary
     allowed_formats: ["jpeg", "png", "jpg"],
     transformation: [{ width: 300, height: 300, crop: "limit" }],
   },
