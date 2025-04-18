@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 const passport = require("passport");
 const {storage} = require("../config/cloudinary");
 const fs = require("fs");
+const cloudinary = require("../config/cloudinary");
 
 const keysecret = process.env.JWT_SECRET;
 
