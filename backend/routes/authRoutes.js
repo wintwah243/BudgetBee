@@ -197,6 +197,7 @@ router.put("/update-profile-pic", protect, upload.single("profilePic"), async (r
       res.status(200).json({ user });
   
     } catch (err) {
+      console.error("Cloudinary Upload Error:", error); 
       console.error(err);
       res.status(500).json({ message: "Error updating profile picture" });
     }
