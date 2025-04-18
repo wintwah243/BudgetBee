@@ -11,7 +11,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: "images", // Folder in Cloudinary
+    folder: "Home/images", 
     allowed_formats: ["jpeg", "png", "jpg"],
     transformation: [{ width: 300, height: 300, crop: "limit" }],
   },
