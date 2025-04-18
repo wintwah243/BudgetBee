@@ -122,7 +122,6 @@ const UserInfo = () => {
   return (
     <DashboardLayout>
       <div className="max-w-3xl w-full mx-auto mt-10 mb-20 px-4">
-        {/* Back Button */}
         <button
           onClick={handleGoBack}
           className="flex items-center gap-2 text-sm text-gray-700 border rounded-full p-[10px] hover:text-yellow-500 mb-6 transition-colors duration-200"
@@ -131,7 +130,6 @@ const UserInfo = () => {
           <span className="font-medium">Back to Dashboard</span>
         </button>
 
-        {/* Profile Header */}
         <div className="flex items-center justify-between mb-10">
           <div className="flex items-center gap-4">
             {user?.profileImageUrl ? (
@@ -183,7 +181,6 @@ const UserInfo = () => {
           </form>
         )}
 
-        {/* Full Name Section */}
         <div className="mb-6">
           <div className="flex justify-between items-center mb-2">
             <h3 className="text-gray-700 font-semibold">Full Name</h3>
@@ -221,14 +218,13 @@ const UserInfo = () => {
           )}
         </div>
 
-        {/* Email Section */}
         <div className="mb-6">
           <h3 className="text-gray-700 font-semibold mb-1">Email</h3>
           <div className="w-full border border-gray-300 rounded-lg p-2 text-gray-600 text-base bg-gray-50">
             {user?.email || 'No Email'}
           </div>
         </div>
-        {/* Aesthetic Banner / Motivation Quote */}
+        
         <div className="mt-10 bg-yellow-50 border border-yellow-200 rounded-xl p-5 shadow-sm">
           <h4 className="text-lg font-semibold text-yellow-700 mb-1">✨ Keep Going!</h4>
           <p className="text-sm text-gray-700">
