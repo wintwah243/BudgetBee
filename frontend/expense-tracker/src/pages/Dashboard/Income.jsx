@@ -9,6 +9,7 @@ import toast from 'react-hot-toast';
 import IncomeList from '../../components/Income/IncomeList';
 import DeleteAlert from '../../components/DeleteAlert';
 import { useUserAuth } from '../../hooks/useUserAuth';
+import { motion } from 'framer-motion';
 
 const Income = () => {
 
@@ -138,17 +139,28 @@ const handleAddIncome = async (income) => {
     return() => {};
   }, []);
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
   return (
     <DashboardLayout activeMenu="Income">
-      <div className='my-5 mx-auto'>
+     <motion.div
+        className='my-5 mx-auto'
+        initial="hidden"
+        animate="visible"
+        variants={fadeInUp}
+      >
           <div className='grid grid-cols-1 gap-6'>
-              <div className=''>
+             <motion.div variants={fadeInUp}>
                   <IncomeOverview 
                     transactions={incomeData}
                     onAddIncome={() => setOpenAddIncomeModal(true)}
                   />
-              </div>
+              </motion.div>
 
+            <motion.div variants={fadeInUp}>
               <IncomeList 
                 transactions={incomeData}
                 onDelete={(id) => {
@@ -160,6 +172,7 @@ const handleAddIncome = async (income) => {
                   setOpenAddIncomeModal(true);
                    }}
               />
+          </motion.div>
           </div>
 
           <Modal
@@ -184,7 +197,7 @@ const handleAddIncome = async (income) => {
               onDelete={() => deleteIncome(openDeleteAlert.data)}
             />
           </Modal>
-      </div>
+      </motion.div>
     </DashboardLayout>
   )
 }
