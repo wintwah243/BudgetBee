@@ -1,8 +1,7 @@
-// routes/profilePicRoutes.js
 const express = require('express');
 const router = express.Router();
-const upload = require('../middleware/uploadMiddleware'); // adjust the path to your multer config
-const User = require('../models/User'); // adjust the path to your user model
+const upload = require('../middleware/uploadMiddleware'); 
+const User = require('../models/User'); 
 
 // Upload and update profile picture
 router.post('/update/:id', upload.single('profilePic'), async (req, res) => {
@@ -21,7 +20,7 @@ router.post('/update/:id', upload.single('profilePic'), async (req, res) => {
 
     res.status(200).json({
       message: 'Profile picture updated successfully.',
-      profilePic: `/uploads/${updatedUser.profilePic}`, // this will be accessible via browser
+      profilePic: `/uploads/${updatedUser.profilePic}`, 
     });
 
   } catch (error) {
