@@ -181,8 +181,7 @@ router.put("/update-profile-pic", protect, upload.single("profilePic"), async (r
     if (!user) return res.status(404).json({ message: "User not found" });
 
     if (req.file) {
-      // req.file.path is already Cloudinary URL
-      user.profileImageUrl = req.file.path; // or req.file.secure_url depending on how multer-storage-cloudinary returns it
+      user.profileImageUrl = req.file.path; 
     }
 
     await user.save();
