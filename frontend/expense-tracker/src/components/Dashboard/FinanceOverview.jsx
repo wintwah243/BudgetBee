@@ -1,7 +1,7 @@
 import React from 'react'
 import CustomPieChart from '../Charts/CustomPieChart';
 
-const COLORS = ["yellow", "green", "orange"];
+const COLORS = ["#90EE90", "red", "#ADD8E6"];
 
 const FinanceOverview = ({totalBalance, totalIncome, totalExpense}) => {
 
