@@ -3,9 +3,13 @@ import moment from "moment";
 export const validateEmail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
-  };
-  
-  export const getInitials = (name) => {
+};
+
+export const validatePassword = (password) => {
+    return typeof password === 'string' && password.length >= 8;
+};
+ 
+export const getInitials = (name) => {
     if (!name) return '';
   
     const words = name.split(' ');
