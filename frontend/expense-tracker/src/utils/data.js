@@ -3,7 +3,8 @@ import {
     PiggyBank,
     CreditCard,
     User2,
-    LogOut
+    LogOut,
+    Target
   } from "lucide-react";
   
   export const SIDE_MENU_DATA = [
@@ -30,6 +31,12 @@ import {
       label: "Account Info",
       icon: User2,
       path: "/userinfo"
+    },
+      {
+      id: "05",
+      label: "All transactions", 
+      icon: Target, 
+      path: "/all-transactions"
     },
     {
       id: "06",
