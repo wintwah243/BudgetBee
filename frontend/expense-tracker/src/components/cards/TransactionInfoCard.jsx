@@ -48,13 +48,14 @@ const TransactionInfoCard = ({
                     </button>
                 )}
 
-                {!hideDeleteBtn && (
-                    <button
-                    className='text-gray-400 hover:text-red-500 transition-opacity cursor-pointer'
-                    onClick={onDelete}>
-                    <LuTrash2 size={18} />
-                    </button>
-                )}
+                {onDelete && !hideDeleteBtn && (
+                        <button
+                            className='text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer'
+                            onClick={onDelete}
+                        >
+                            <LuTrash2 size={18} />
+                        </button>
+                    )}
 
                 <div className={`flex items-center gap-2 px-3 py-1.5 rounded-md ${getAmountStyles()}`}>
                     <h6 className='text-xs font-medium'>{type==="income" ? "+" : "-"} MMK {amount}</h6>
