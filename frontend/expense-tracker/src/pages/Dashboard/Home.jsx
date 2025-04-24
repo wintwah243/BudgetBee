@@ -5,8 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../utils/axiosInstance';
 import { API_PATHS } from '../../utils/apiPaths';
 import InfoCard from '../../components/cards/InfoCard ';
-import { LuHandCoins, LuWalletMinimal } from 'react-icons/lu';
-import { IoMdCard } from 'react-icons/io';
+import { MdSavings, MdTrendingUp, MdOutlineMoneyOff } from 'react-icons/md';
 import { addThousandsSeparator } from '../../utils/helper';
 import RecentTransactions from '../../components/Dashboard/RecentTransactions';
 import FinanceOverview from '../../components/Dashboard/FinanceOverview';
@@ -58,24 +57,26 @@ const Home = () => {
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
           <InfoCard
-            icon={<IoMdCard />}
+            icon={<MdSavings />}
             label="Total Balance"
             value={addThousandsSeparator(dashboardData?.totalBalance || 0)}
-            color="bg-"
+            color=""
             bgColor="bg-purple-200"
           />
+
           <InfoCard
-            icon={<LuWalletMinimal />}
+            icon={<MdTrendingUp />}
             label="Total Income"
             value={addThousandsSeparator(dashboardData?.totalIncome || 0)}
-            color="bg-"
+            color=""
             bgColor="bg-blue-200"
           />
+
           <InfoCard
-            icon={<LuHandCoins />}
+            icon={<MdOutlineMoneyOff />}
             label="Total Expense"
             value={addThousandsSeparator(dashboardData?.totalExpense || 0)}
-            color="bg-"
+            color=""
             bgColor="bg-yellow-200"
           />
         </motion.div>
