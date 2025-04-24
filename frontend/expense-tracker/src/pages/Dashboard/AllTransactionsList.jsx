@@ -98,16 +98,16 @@ const AllTransactionList = () => {
             initial="hidden"
             animate="visible"
           >
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">All Transactions</h2>
+            <div className="flex flex-col sm:flex-row items-center justify-between mb-4">
+                  <h2 className="text-2xl sm:text-1xl font-semibold text-gray-800 mb-4 sm:mb-0">All Transactions</h2>
 
-              <input
-                type="text"
-                placeholder="Search ..."
-                className="p-2 border border-gray-300 rounded-md w-full sm:w-1/3"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
+                    <input
+                      type="text"
+                      placeholder="Search ..."
+                      className="p-2 border border-gray-300 rounded-md w-full sm:w-1/2 lg:w-1/3 xl:w-1/4"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                    />
             </div>
 
             <TransactionList
