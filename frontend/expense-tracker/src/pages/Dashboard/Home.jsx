@@ -61,22 +61,22 @@ const Home = () => {
             icon={<IoMdCard />}
             label="Total Balance"
             value={addThousandsSeparator(dashboardData?.totalBalance || 0)}
-            color="bg-white"
-            bgColor="bg-yellow-400"
+            color="bg-"
+            bgColor="bg-purple-200"
           />
           <InfoCard
             icon={<LuWalletMinimal />}
             label="Total Income"
             value={addThousandsSeparator(dashboardData?.totalIncome || 0)}
-            color="bg-white"
-            bgColor="bg-green-400"
+            color="bg-"
+            bgColor="bg-blue-200"
           />
           <InfoCard
             icon={<LuHandCoins />}
             label="Total Expense"
             value={addThousandsSeparator(dashboardData?.totalExpense || 0)}
-            color="bg-white"
-            bgColor="bg-orange-400"
+            color="bg-"
+            bgColor="bg-yellow-200"
           />
         </motion.div>
         
