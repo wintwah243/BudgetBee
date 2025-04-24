@@ -18,6 +18,7 @@ import UserInfo from './components/Dashboard/UserInfo';
 import Welcome from './pages/Dashboard/Welcome';
 import GoogleAuthCallback from './pages/Auth/GoogleAuthCallback';
 import LearnMore from './pages/Dashboard/LearnMore';
+import AllTransactionsList from './pages/Dashboard/AllTransactionsList';
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="/forgotpassword/:id/:token" element={<ForgotPassword />} />
           <Route path="/google-auth" element={<GoogleAuthCallback />} />
           <Route path="/learnmore" element={<LearnMore />} />
+          <Route path="/all-transactions" element={<AllTransactionsList/>} />
         </Routes>
       </Router>
 
