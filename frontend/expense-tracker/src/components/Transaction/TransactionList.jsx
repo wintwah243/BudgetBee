@@ -30,6 +30,7 @@ const TransactionList = ({ transactions, onDownload }) => {
               amount={transaction.amount}
               description={transaction.description}
               type={transaction.type}
+              hideDeleteBtn={true}
             />
           );
         })
