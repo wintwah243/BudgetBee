@@ -89,7 +89,7 @@ const Home = () => {
         >
           <RecentTransactions
             transactions={dashboardData?.recentTransactions}
-            onSeeMore={() => navigate("/expense")}
+            onSeeMore={() => navigate("/all-transactions")}
           />
 
           <FinanceOverview
