@@ -4,7 +4,7 @@ import {
     CreditCard,
     User2,
     LogOut,
-    Target
+    FileText
   } from "lucide-react";
   
   export const SIDE_MENU_DATA = [
@@ -28,15 +28,15 @@ import {
     },
     {
       id: "04",
-      label: "Account Info",
-      icon: User2,
-      path: "/userinfo"
+      label: "All transactions",
+      icon: FileText,
+      path: "/all-transactions"
     },
       {
       id: "05",
-      label: "All transactions", 
-      icon: Target, 
-      path: "/all-transactions"
+      label: "Account Info", 
+      icon: User2, 
+      path: "/userinfo"
     },
     {
       id: "06",
