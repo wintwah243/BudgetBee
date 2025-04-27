@@ -30,9 +30,9 @@ const CustomLineChart = ({data}) => {
         <ResponsiveContainer width="100%" height={300}>
             <AreaChart data={data}>
             <defs>
-                <linearGradient id='incomeGradient' x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor='#875cf5' stopOpacity={0.4}/>
-                    <stop offset="95%" stopColor='#875cf5' stopOpacity={0}/>
+                <linearGradient id='expenseGradient' x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor='#FF6B6B' stopOpacity={0.4}/>
+                    <stop offset="95%" stopColor='#FF6B6B' stopOpacity={0}/>
                 </linearGradient>
             </defs>
 
@@ -41,7 +41,7 @@ const CustomLineChart = ({data}) => {
             <YAxis tick={{fontSize:12, fill:"#555"}} stroke='none'/>
             <Tooltip content={<CustomTooltip />} />
 
-            <Area type="monotone" dataKey="amount" stroke='#875cf5' fill='url(#incomeGradient)' strokeWidth={3} dot={{r:3,fill:"#ab8df8"}} />
+            <Area type="monotone" dataKey="amount" stroke='#FF6B6B' fill='url(#expenseGradient)' strokeWidth={3} dot={{r:3,fill:"#FF6B6B"}} />
             </AreaChart>
         </ResponsiveContainer>
     </div>
