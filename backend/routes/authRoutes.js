@@ -39,8 +39,8 @@ router.post("/upload-image", upload.single("image"), (req,res) => {
 const transporter = nodemailer.createTransport({
     service:"gmail",
     auth:{
-        user:process.env.EMAIL_USER,
-        pass:process.env.EMAIL_PASS
+        user:"wahwint72@gmail.com",
+        pass:myryqwsatdfhcppj
     }
 })
 
@@ -67,7 +67,7 @@ router.post("/sendpasswordlink", async(req, res) => {
 
         if(setusertoken){
             const mailOptions = {
-                from:process.env.EMAIL_USER,
+                from:"wahwint72@gmail.com",
                 to:email,
                 subject:"Sending Email For Password Reset",
                 text:`This link is valid for 2 minutes https://budgetbee-vsmk.onrender.com/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`
