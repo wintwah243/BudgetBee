@@ -30,7 +30,7 @@ connectDB();
 
 //setup for session
 app.use(session({
-    secret:"e4d8aab3b6a0e2b114d5c76cb90d20cc54a39977746075609b28244acb00741b2021f63ea4b88598a457c2505640e85600587007386bdfaca9f0352b782405f0",
+    secret:process.env.SESSION_SECRET,
     resave:false,
     saveUninitialized: true
 }));
