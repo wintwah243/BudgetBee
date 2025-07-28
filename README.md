@@ -17,8 +17,6 @@ BudgetBee is perfect for:
 
 Students building better spending habits while managing life away from home
 
-Freelancers and gig workers tracking variable income
-
 Anyone who wants a clean, easy-to-use tool for budgeting
 
 People who want to gain awareness of their spending habits
